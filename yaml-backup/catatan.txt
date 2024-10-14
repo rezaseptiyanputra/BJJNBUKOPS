@@ -1,0 +1,29 @@
+kubectl create secret docker-registry netbackupkops-docker-cred \
+--docker-server=docker.io \
+--docker-username=rezaseptiyanputra \
+--docker-password=L00p1ng! \
+--docker-email=rezaseptiyanputra@gmail.com \
+--namespace netbackupkops
+
+
+
+kubectl get sc --show-labels
+kubectl get volumesnapshotclass --show-labels
+
+
+kubectl label sc standard-rwo netbackup.veritas.com/default-csi-storage-class=true
+kubectl label sc standard-rwo netbackup.veritas.com/default-csi-filesystem-storage-class=true
+
+kubectl label volumesnapshotclass  standard-vsc netbackup.veritas.com/default-csi-volume-snapshot-class=true
+kubectl label volumesnapshotclass standard-rwo-vsc netbackup.veritas.com/default-csi-volume-snapshot-class=true
+
+kubectl get backupservercert nbudatamovercertificate -n netbackupkops -o yaml
+
+helm install netbackupkops /home/rezaseptiyanputra/netbackupkops-helm-chart/ -n netbackupkops 
+kubectl get pod -n netbackupkops
+kubectl apply -f configmap.yaml
+kubectl apply -f secret-backupservercert.yaml
+kubectl apply -f backupservercert.yaml
+kubectl get backupservercert nbudatamovercertificate -n netbackupkops -o yaml
+
+k8sts -ns netbackupkops -ps prdnbumaster02 -ak A3POVb6JRtW9e72DSvRP2LvSCxgRbBzEMKoNwk2OsU-R4a8l4Ms2-PI0mBLt8wxb

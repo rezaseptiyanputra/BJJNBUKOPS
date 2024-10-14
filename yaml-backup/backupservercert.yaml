@@ -1,0 +1,13 @@
+apiVersion: netbackup.veritas.com/v1
+kind: BackupServerCert
+metadata:
+  name: nbudatamovercertificate
+  namespace: netbackupkops
+spec:
+  clusterName: 34.101.124.204
+  backupServer: prdnbumaster02
+  certificateOperation: Create
+  certificateType: NBCA
+  nbcaAttributes:
+    nbcaCreateOptions:
+      secretName: netbackupkops-backupservercert-secret

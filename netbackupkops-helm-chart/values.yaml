@@ -1,0 +1,32 @@
+netbackupkops:
+  containers:
+    manager:
+      image: rezaseptiyanputra/nbukops:10.4.0.1
+      resources:
+        limits:
+          cpu: 150m
+          memory: 600Mi
+        requests:
+          cpu: 100m
+          memory: 500Mi
+  kopsPvcStorageClass:
+  kopsPvcSize: 10Gi
+  pvMountPath: /usr/openv
+  imagePullSecrets: 
+  - name: netbackupkops-docker-cred
+  fipsMode: DISABLE
+  acceleratorTracklogPvcStorageClass: None
+nbsetup:
+  replicas: 1
+  containers:
+    netbackup_config_pod:
+      nbprimaryserver: prdnbumaster02
+      nbsha256fingerprint: 53:4B:86:99:91:73:79:15:BE:60:8C:A4:90:3D:1E:29:72:77:98:83:F7:6F:AA:BD:CE:AC:3B:40:63:32:1A:5F
+      k8sCluster: 34.101.124.204
+      k8sPort: 443
+      datamoverimage: rezaseptiyanputra/nbudata-mover:10.4.0.1
+      logLevel: INFO
+      storageclassblock: standard-rwo
+      volumesnapshotclassblock: standard-rwo-vsc
+      storageclassfilesystem: standard-rwo
+      volumesnapshotclassfilesystem: standard-rwo-vsc
