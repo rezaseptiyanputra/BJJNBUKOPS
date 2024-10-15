@@ -5,7 +5,7 @@ kubectl create secret docker-registry netbackupkops-docker-cred \
 --docker-email=rezaseptiyanputra@gmail.com \
 --namespace netbackupkops
 
-
+test
 
 kubectl get sc --show-labels
 kubectl get volumesnapshotclass --show-labels
