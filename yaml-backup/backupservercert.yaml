@@ -2,7 +2,7 @@ apiVersion: netbackup.veritas.com/v1
 kind: BackupServerCert
 metadata:
   name: nbudatamovercertificate
-  namespace: netbackupkops
+  namespace: netbackup
 spec:
   clusterName: 34.101.124.204
   backupServer: sta-id-adp-nbumaster-instance-01
