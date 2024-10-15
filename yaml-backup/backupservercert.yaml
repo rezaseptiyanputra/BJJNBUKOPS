@@ -5,7 +5,7 @@ metadata:
   namespace: netbackupkops
 spec:
   clusterName: 34.101.124.204
-  backupServer: prdnbumaster02
+  backupServer: sta-id-adp-nbumaster-instance-01
   certificateOperation: Create
   certificateType: NBCA
   nbcaAttributes:

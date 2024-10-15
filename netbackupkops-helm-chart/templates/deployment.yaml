@@ -2649,12 +2649,12 @@ spec:
         control-plane: controller-manager
     spec:
       hostAliases:
-      - ip: "172.18.0.6"
+      - ip: "10.141.141.2"
         hostnames:
-        - "prdnbumaster02"
-      - ip: "172.18.0.7"
+        - "sta-id-adp-nbumaster-instance-01"
+      - ip: "10.141.141.4"
         hostnames:
-        - "prdnbumedia02"
+        - "sta-id-adp-nbumedia-instance-01"
       containers:
       - args:
         - --secure-listen-address=0.0.0.0:8443
@@ -2737,12 +2737,12 @@ spec:
         component: netbackup
     spec:
       hostAliases:
-      - ip: "172.18.0.6"
+      - ip: "10.141.141.2"
         hostnames:
-        - "prdnbumaster02"
-      - ip: "172.18.0.7"
+        - "sta-id-adp-nbumaster-instance-01"
+      - ip: "10.141.141.4"
         hostnames:
-        - "prdnbumedia02"
+        - "sta-id-adp-nbumedia-instance-01"
       containers:
       - args:
         - /nbsetup/nbconfig/configkops.py

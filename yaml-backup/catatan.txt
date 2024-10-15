@@ -1,3 +1,16 @@
+Step by Step Installation
+================================================
+1. Create volume snapshot class
+kubectl apply -f volumesnapshotclass.yaml
+
+2. set storageclass and volume snapshot class label
+kubectl get sc --show-labels
+kubectl get volumesnapshotclass --show-labels
+
+kubectl label volumesnapshotclass  standard-vsc netbackup.veritas.com/default-csi-volume-snapshot-class=true
+kubectl label sc standard-rwo netbackup.veritas.com/default-csi-storage-class=true
+
+2.Create secret docker registry
 kubectl create secret docker-registry netbackupkops-docker-cred \
 --docker-server=docker.io \
 --docker-username=rezaseptiyanputra \
@@ -5,25 +18,21 @@ kubectl create secret docker-registry netbackupkops-docker-cred \
 --docker-email=rezaseptiyanputra@gmail.com \
 --namespace netbackupkops
 
-test
-
-kubectl get sc --show-labels
-kubectl get volumesnapshotclass --show-labels
-
-
-kubectl label sc standard-rwo netbackup.veritas.com/default-csi-storage-class=true
-kubectl label sc standard-rwo netbackup.veritas.com/default-csi-filesystem-storage-class=true
-
-kubectl label volumesnapshotclass  standard-vsc netbackup.veritas.com/default-csi-volume-snapshot-class=true
-kubectl label volumesnapshotclass standard-rwo-vsc netbackup.veritas.com/default-csi-volume-snapshot-class=true
-
-kubectl get backupservercert nbudatamovercertificate -n netbackupkops -o yaml
-
+3.Deploy helm chart netbackupkops
 helm install netbackupkops /home/rezaseptiyanputra/netbackupkops-helm-chart/ -n netbackupkops 
 kubectl get pod -n netbackupkops
+
+4. deploy configmap for datamover container
 kubectl apply -f configmap.yaml
+
+5. add kuberentes cluster to netbackup using nbu webui
+
+6. check if the NBCA mode is on(run in nbu master server)
+/usr/openv/netbackup/bin/nbcertcmd -getSecConfig -caUsage. 
+
+7. deploy secret-backupservercert
 kubectl apply -f secret-backupservercert.yaml
+
+8. deploy backupservercert
 kubectl apply -f backupservercert.yaml
 kubectl get backupservercert nbudatamovercertificate -n netbackupkops -o yaml
-
-k8sts -ns netbackupkops -ps prdnbumaster02 -ak A3POVb6JRtW9e72DSvRP2LvSCxgRbBzEMKoNwk2OsU-R4a8l4Ms2-PI0mBLt8wxb

@@ -1,12 +1,12 @@
 kind: ConfigMap 
 apiVersion: v1 
 metadata:
-  name: prdnbumaster02
+  name: sta-id-adp-nbumaster-instance-01
   namespace: netbackupkops
 data:
   datamover.hostaliases: |
-        172.18.0.6=prdnbumaster02
-        172.18.0.7=prdnbumedia02
+        10.141.141.2=sta-id-adp-nbumaster-instance-01
+        10.141.141.4=sta-id-adp-nbumedia-instance-01
   datamover.properties: |
         image=rezaseptiyanputra/nbudata-mover:10.4.0.1
         imagePullSecret=netbackupkops-docker-cred
