@@ -4,7 +4,7 @@ metadata:
   name: nbudatamovercertificate
   namespace: netbackup
 spec:
-  clusterName: 34.101.124.204
+  clusterName: 10.131.6.2
   backupServer: sta-id-adp-nbumaster-instance-01
   certificateOperation: Create
   certificateType: NBCA
