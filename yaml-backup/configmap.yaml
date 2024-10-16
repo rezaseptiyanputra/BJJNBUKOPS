@@ -8,6 +8,6 @@ data:
         10.141.141.2=sta-id-adp-nbumaster-instance-01
         10.141.141.4=sta-id-adp-nbumedia-instance-01
   datamover.properties: |
-        image=rezaseptiyanputra/nbudata-mover:10.4.0.1
-        imagePullSecret=netbackupkops-docker-cred
+        image=asia-southeast2-docker.pkg.dev/joey-dev-project/dev-veritas/netbackupdatamover:dev-10.4
+        imagePullSecret=netbackupkops-docker-creds
   version: "1"

@@ -1,7 +1,7 @@
 netbackupkops:
   containers:
     manager:
-      image: rezaseptiyanputra/nbukops:10.4.0.1
+      image: asia-southeast2-docker.pkg.dev/joey-dev-project/dev-veritas/netbackupkops:netbackupkops_10.4_0018
       resources:
         limits:
           cpu: 150m
@@ -13,7 +13,7 @@ netbackupkops:
   kopsPvcSize: 10Gi
   pvMountPath: /usr/openv
   imagePullSecrets: 
-  - name: netbackupkops-docker-cred
+  - name: netbackupkops-docker-creds
   fipsMode: DISABLE
   acceleratorTracklogPvcStorageClass: None
 nbsetup:
@@ -21,10 +21,10 @@ nbsetup:
   containers:
     netbackup_config_pod:
       nbprimaryserver: sta-id-adp-nbumaster-instance-01
-      nbsha256fingerprint: 82:FB:3A:4D:C4:8E:93:E8:00:4F:68:40:EF:CF:34:80:E9:4B:65:0A:74:B1:57:0F:78:88:31:A9:7A:B2:33:72
+      nbsha256fingerprint: 31:0B:AA:55:43:2A:0A:9F:76:72:06:75:FE:BB:98:DA:E1:BF:7D:AD:D4:62:B0:DF:52:B6:19:E7:F0:17:7D:81
       k8sCluster: 10.131.6.2
       k8sPort: 443
-      datamoverimage: rezaseptiyanputra/nbudata-mover:10.4.0.1
+      datamoverimage: asia-southeast2-docker.pkg.dev/joey-dev-project/dev-veritas/netbackupdatamover:dev-10.4
       logLevel: INFO
       storageclassblock: standard-rwo
       volumesnapshotclassblock: standard-rwo-vsc
