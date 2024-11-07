@@ -1,7 +1,7 @@
 netbackupkops:
   containers:
     manager:
-      image: asia-southeast2-docker.pkg.dev/joey-dev-project/dev-veritas/netbackupkops:netbackupkops_10.4_0018
+      image: asia-southeast2-docker.pkg.dev/joey-prod-project/prod-veritas/netbackupkops:10.4.0.1
       resources:
         limits:
           cpu: 150m
@@ -13,18 +13,18 @@ netbackupkops:
   kopsPvcSize: 10Gi
   pvMountPath: /usr/openv
   imagePullSecrets: 
-  - name: netbackupkops-docker-creds
+  - name: gcr-json-key
   fipsMode: DISABLE
   acceleratorTracklogPvcStorageClass: None
 nbsetup:
   replicas: 1
   containers:
     netbackup_config_pod:
-      nbprimaryserver: sta-id-adp-nbumaster-instance-01
-      nbsha256fingerprint: 31:0B:AA:55:43:2A:0A:9F:76:72:06:75:FE:BB:98:DA:E1:BF:7D:AD:D4:62:B0:DF:52:B6:19:E7:F0:17:7D:81
-      k8sCluster: 10.131.6.2
+      nbprimaryserver: prod-id-adp-nbumaster-instance-01
+      nbsha256fingerprint: 3F:83:2C:86:06:44:F7:50:75:CF:FD:4A:03:16:75:90:0F:B2:76:F7:6E:AE:87:A6:EB:6F:04:7D:64:BD:45:03
+      k8sCluster: 34.101.178.17
       k8sPort: 443
-      datamoverimage: asia-southeast2-docker.pkg.dev/joey-dev-project/dev-veritas/netbackupdatamover:dev-10.4
+      datamoverimage: asia-southeast2-docker.pkg.dev/joey-prod-project/asia-southeast2/prod-veritas/netbackupdatamover:10.4.0.1
       logLevel: INFO
       storageclassblock: standard-rwo
       volumesnapshotclassblock: standard-rwo-vsc
