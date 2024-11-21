@@ -7,7 +7,7 @@ kubectl apply -f volumesnapshotclass.yaml
 kubectl get sc --show-labels
 kubectl get volumesnapshotclass --show-labels
 
-kubectl label volumesnapshotclass  standard-vsc netbackup.veritas.com/default-csi-volume-snapshot-class=true
+kubectl label volumesnapshotclass  standard-rwo-vsc netbackup.veritas.com/default-csi-volume-snapshot-class=true
 kubectl label sc standard-rwo netbackup.veritas.com/default-csi-storage-class=true
 
 2.Create secret docker registry
